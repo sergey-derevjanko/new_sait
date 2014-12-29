@@ -1,12 +1,23 @@
-var geocoder;
-var map;
-
 (function($){
 
+	$('a.page-scroll').on('click', function(event) {
+        var $anchor = $(this);
+		console.log();
+        $('html, body').stop().animate({
+            scrollTop: $($anchor.attr('href')).offset().top
+        }, 1000);
+        event.preventDefault();
+    });
+	
+	
 	$(function() {  
-		$('input[class^="calc-"], select[class="select_s8"]').styler();  
+		$('input[class^="s8_styler-"], select[class="s8_styler"]').styler();  
 	});
 	
+	$_clientsTranslated = function(event){
+		
+	}
+	/*
 	$.setupTimer = function(data){
 		dateObj = new Date(data.year, (data.month - 1), data.date).toDateString();
 		console.log(dateObj);
@@ -52,7 +63,7 @@ var map;
 			} else {
 			  alert('Geocode was not successful for the following reason: ' + status);
 			}
-		});*/	
+		});	
 		
 		var marker = new google.maps.Marker({
 			map: map,
@@ -63,10 +74,50 @@ var map;
         });
 
     };
-	
+	*/
 })(jQuery);
 
 jQuery(document).ready(function(){
+	
+	$_owl = $('#clients-carousel');
+	
+	/*$_owl.on('translate.owl.carousel ', function(event){
+		$_owl.find('.owl-item.active').each(function(){
+			var item = $(this);
+			if(item.hasClass('active')){
+				item.find('.slide-text-block').fadeOut(100);
+			}
+		});
+	});
+	
+	$_owl.on('translated.owl.carousel ', function(event){
+		$_owl.find('.owl-item.active').each(function(){
+			var item = $(this);
+			if(item.hasClass('active')){
+				item.find('.slide-text-block').fadeIn(300);
+			}
+		});
+	});*/
+	
+	$_owl.owlCarousel({
+		animateOut: 'fadeOut'
+		,animateIn: 'fadeIn'
+		,items:1
+		,margin:0
+		,stagePadding:0
+		,smartSpeed:450
+		,nav:true
+		,navRewind: false
+		,navText: ['<i class="fa fa-angle-left fa-3x"></i>','<i class="fa fa-angle-right fa-3x"></i>']
+		,loop:true
+		,mouseDrag: false
+		,responsiveClass: true
+	});
+
+	
+	
+	
+	/*
 	$.initializeMap();
 	
 	$('input[id^="phone"]').mask("+38(999)999-99-99",{placeholder:"x"});
@@ -159,9 +210,11 @@ jQuery(document).ready(function(){
 		
 		return false;
 	});
+	*/
 });
 
 $(window).load(function(){
+	/*
 	$(".block-title").each(function(indx){
 		var $_this = $(this);
 		var title_h = $_this.children('.title.title-cell').outerWidth();
@@ -170,4 +223,14 @@ $(window).load(function(){
 			width: stripe_width+'px',
 		});
 	});
+	*/
+});
+
+// jQuery to collapse the navbar on scroll
+$(window).scroll(function() {
+    if ($(".navbar").offset().top > 50) {
+        $(".navbar-fixed-top").addClass("top-nav-collapse");
+    } else {
+        $(".navbar-fixed-top").removeClass("top-nav-collapse");
+    }
 });
