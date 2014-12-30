@@ -78,6 +78,10 @@
 })(jQuery);
 
 jQuery(document).ready(function(){
+
+	setTimeout(function(){
+		$('body').addClass('loaded');
+	}, 2000);
 	
 	$_owl = $('#clients-carousel');
 	
